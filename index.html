@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>VPS 1.0.0</title>
+</head>
+
+<style>
+  * {
+    font-size: 14px;
+    font-family: Consolas, sans-serif;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0px 0px 0px 0px;
+  }
+
+  form.device_form {
+    width: 100%;
+    height: 70%;
+    background-color: black;
+  }
+
+  form.log_form {
+    width: 100%;
+    height: 30%;
+    float: bottom;
+    background-color: gray;
+  }
+
+  textarea {
+    position: relative;
+    display: block;
+    left: 3px;
+    top: 3px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    border: 10px;
+    resize: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  div {
+    width: 100%;
+    height: 20%;
+    float: center;
+    background-color: black;
+  }
+
+  div.left {
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-color: black;
+  }
+
+  div.right {
+    width: 50%;
+    height: 100%;
+    float: right;
+    background-color: black;
+  }
+
+  label.device_num {
+    width: 10%;
+    height: 100%;
+    float: left;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  /* img {
+    width: 40%;
+    height: 100%;
+    background-color: black;
+    float: center;
+  } */
+
+  canvas {
+    width: 40%;
+    height: 100%;
+    background-color: black;
+    float: center;
+  }
+
+  /* img.hide {
+    visibility: hidden;
+  } */
+
+  div.device_info {
+    width: 48%;
+    height: 100%;
+    background-color: black;
+    float: right;
+  }
+
+  label {
+    color: white;
+  }
+
+  label.connect_state {
+    color: yellow;
+  }
+</style>
+
+<body onload="init_vps();">
+  <form class="device_form">
+    <div>
+      <div class="left">
+        <label class="device_num">1</label>
+        <canvas id="device_img_1" width="1280" height="720"></canvas>
+        <div class="device_info">
+          <label class="connect_state" id="device_info_1_1">1.대기중...</label><br>
+          <label id="device_info_1_2">FPS 캡쳐: 0, 전송: 0</label><br>
+          <label id="device_info_1_3"></label><br>
+          <label id="device_info_1_4"></label><br>
+          <label id="device_info_1_5"></label><br>
+        </div>
+      </div>
+      <div class="right">
+        <label class="device_num">2</label>
+        <canvas id="device_img_2" width="1280" height="720"></canvas>
+        <div class="device_info">
+          <label class="connect_state" id="device_info_2_1">2.대기중...</label><br>
+          <label id="device_info_2_2">FPS 캡쳐: 0, 전송: 0</label><br>
+          <label id="device_info_2_3"></label><br>
+          <label id="device_info_2_4"></label><br>
+          <label id="device_info_2_5"></label><br>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="left">
+        <label class="device_num">3</label>
+        <canvas id="device_img_3" width="1280" height="720"></canvas>
+        <div class="device_info">
+          <label class="connect_state" id="device_info_3_1">3.대기중...</label><br>
+          <label id="device_info_3_2">FPS 캡쳐: 0, 전송: 0</label><br>
+          <label id="device_info_3_3"></label><br>
+          <label id="device_info_3_4"></label><br>
+          <label id="device_info_3_5"></label><br>
+        </div>
+      </div>
+      <div class="right">
+        <label class="device_num">4</label>
+        <canvas id="device_img_4" width="1280" height="720"></canvas>
+        <div class="device_info">
+          <label class="connect_state" id="device_info_4_1">4.대기중...</label><br>
+          <label id="device_info_4_2">FPS 캡쳐: 0, 전송: 0</label><br>
+          <label id="device_info_4_3"></label><br>
+          <label id="device_info_4_4"></label><br>
+          <label id="device_info_4_5"></label><br>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="left">
+        <label class="device_num">5</label>
+        <canvas id="device_img_5" width="1280" height="720"></canvas>
+        <div class="device_info">
+          <label class="connect_state" id="device_info_5_1">5.대기중...</label><br>
+          <label id="device_info_5_2">FPS 캡쳐: 0, 전송: 0</label><br>
+          <label id="device_info_5_3"></label><br>
+          <label id="device_info_5_4"></label><br>
+          <label id="device_info_5_5"></label><br>
+        </div>
+      </div>
+      <div class="right">
+        <label class="device_num">6</label>
+        <canvas id="device_img_6" width="1280" height="720"></canvas>
+        <div class="device_info">
+          <label class="connect_state" id="device_info_6_1">6.대기중...</label><br>
+          <label id="device_info_6_2">FPS 캡쳐: 0, 전송: 0</label><br>
+          <label id="device_info_6_3"></label><br>
+          <label id="device_info_6_4"></label><br>
+          <label id="device_info_6_5"></label><br>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="left">
+        <label class="device_num">7</label>
+        <canvas id="device_img_7" width="1280" height="720"></canvas>
+        <div class="device_info">
+          <label class="connect_state" id="device_info_7_1">7.대기중...</label><br>
+          <label id="device_info_7_2">FPS 캡쳐: 0, 전송: 0</label><br>
+          <label id="device_info_7_3"></label><br>
+          <label id="device_info_7_4"></label><br>
+          <label id="device_info_7_5"></label><br>
+        </div>
+      </div>
+      <div class="right">
+        <label class="device_num">8</label>
+        <canvas id="device_img_8" width="1280" height="720"></canvas>
+        <div class="device_info">
+          <label class="connect_state" id="device_info_8_1">8.대기중...</label><br>
+          <label id="device_info_8_2">FPS 캡쳐: 0, 전송: 0</label><br>
+          <label id="device_info_8_3"></label><br>
+          <label id="device_info_8_4"></label><br>
+          <label id="device_info_8_5"></label><br>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="left">
+        <label class="device_num">9</label>
+        <canvas id="device_img_9" width="1280" height="720"></canvas>
+        <div class="device_info">
+          <label class="connect_state" id="device_info_9_1">9.대기중...</label><br>
+          <label id="device_info_9_2">FPS 캡쳐: 0, 전송: 0</label><br>
+          <label id="device_info_9_3"></label><br>
+          <label id="device_info_9_4"></label><br>
+          <label id="device_info_9_5"></label><br>
+        </div>
+      </div>
+      <div class="right">
+        <label class="device_num">10</label>
+        <canvas id="device_img_10" width="1280" height="720"></canvas>
+        <div class="device_info">
+          <label class="connect_state" id="device_info_10_1">10.대기중...</label><br>
+          <label id="device_info_10_2">FPS 캡쳐: 0, 전송: 0</label><br>
+          <label id="device_info_10_3"></label><br>
+          <label id="device_info_10_4"></label><br>
+          <label id="device_info_10_5"></label><br>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <form class="log_form">
+    <textarea type="text" id="logview" wrap="soft" readonly="readonly" disabled></textarea>
+  </form>
+</body>
+
+<script type="text/javascript">
+
+  const { ipcRenderer } = require('electron');
+  const moment = require('moment');
+
+  ipcRenderer.on('logData', (event, log) => {
+    var textarea = document.getElementById('logview');
+
+    if(textarea.value == '') {
+      textarea.value = log;
+    } else {
+      textarea.value += ("\n" + log);
+    }
+
+    var value = textarea.value;
+    var lines = value.split('\n');
+
+    if(lines.length > 500) {
+      var index = value.indexOf('\n');
+      textarea.value = value.substring(index + 1, value.length);
+    }
+
+    textarea.scrollTop = textarea.scrollHeight;
+  });
+
+  ipcRenderer.on('mirrorData', (event, data) => {
+    var dNum = data.dNum;
+    var imgData = data.data.data;
+    var imgWidth = data.width;
+    var imgHeight = data.height;
+
+    var canvas = document.getElementById(`device_img_${dNum}`);
+    var ctx = canvas.getContext('2d');
+
+    var uInt8Array = imgData;
+    var len = uInt8Array.length;
+    var binaryString = [len];
+    while(len--) {
+      binaryString[len] = String.fromCharCode(uInt8Array[len]);
+    }
+
+    var data = binaryString.join('');
+    var base64 = window.btoa(data);
+    var img = new Image();
+    img.src = "data:image/jpg;base64," + base64;
+    img.onload = function () {
+      var border = 10; // 상,하,좌,우 border 5
+      var canvasSize = canvas.height - (border * 2); 
+      var canvasX = (canvas.width - canvasSize) / 2;
+      var canvasY = border;
+
+      // if(canvas.width < canvas.height) {
+      //   canvasSize = canvas.width;
+      //   canvasX = 0;
+      //   canvasY = (canvas.height - canvasSize) / 2;
+      // }
+
+      var x = canvasX;
+      var y = canvasY;
+      var newImgWidth = canvasSize;
+      var newImgHeight = canvasSize;
+
+      if(imgWidth < imgHeight) {
+        // Portrait
+        newImgWidth = imgWidth * canvasSize / imgHeight;
+        x = canvasX + ((canvasSize - newImgWidth) / 2);
+      } else {
+        // Landscape
+        newImgHeight = imgHeight * canvasSize / imgWidth;
+        y = canvasY + ((canvasSize - newImgHeight) / 2);
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, x, y, newImgWidth, newImgHeight);
+    };
+  });
+
+  ipcRenderer.on('updateConnectInfo', (event, data) => {
+    var dNum = data.dNum;
+    var connect_time = data.connect_time;
+    var frames = data.frames;
+
+    var diff = new Date().getTime() - connect_time;
+    var hours = Math.floor( diff / (1000 * 60 * 60) );
+    var minutes = Math.floor( (diff - (hours * 1000 * 60 * 60)) / (1000 * 60) );
+    var seconds = Math.floor( (diff - (hours * 1000 * 60 * 60) - (minutes * 1000 * 60)) / 1000 );
+
+    // console.log(`시간 정보 : ${JSON.stringify(data)}`);
+    // console.log(`디바이스 연결 정보 업데이트 : ${diff}==> ${hours}:${minutes}:${seconds}`);
+
+    var info3 = document.getElementById(`device_info_${dNum}_3`);
+    text = `전송 시간: ${hours}:${minutes}:${seconds}`;
+    info3.innerHTML = text;
+    
+    var info5 = document.getElementById(`device_info_${dNum}_5`);
+    var frames = data.frames;
+    text = `FPS 캡쳐: ${frames}, 전송: ${frames}`;
+    info5.innerHTML = text;
+  });
+
+  ipcRenderer.on('device_connect', (event, data) => {
+    var dNum = data.dNum;
+    var width = data.width;
+    var height = data.height;
+
+    var info1 = document.getElementById(`device_info_${dNum}_1`);
+    var text = `${dNum}. 전송중`;
+    info1.innerHTML = text;
+
+    var info2 = document.getElementById(`device_info_${dNum}_2`);
+    text = `접속한 시간: ${moment(new Date()).format('YYYY/MM/DD, HH:mm:ss')}`;
+    info2.innerHTML = text;
+
+    var info3 = document.getElementById(`device_info_${dNum}_3`);
+    text = `전송 시간: 0:0:0`;
+    info3.innerHTML = text;
+
+    var info4 = document.getElementById(`device_info_${dNum}_4`);
+    text = `해상도: W: ${width}, H: ${height}`;
+    info4.innerHTML = text;
+
+    var info5 = document.getElementById(`device_info_${dNum}_5`);
+    text = `FPS 캡쳐: 0, 전송: 0`;
+    info5.innerHTML = text;
+  });
+
+  ipcRenderer.on('device_disconnect', (event, dNum) => {
+    var info1 = document.getElementById(`device_info_${dNum}_1`);
+    var text = `${dNum}. 대기중...`;
+    info1.innerHTML = text;
+
+    var info2 = document.getElementById(`device_info_${dNum}_2`);
+    text = `FPS 캡쳐: 0, 전송: 0`;
+    info2.innerHTML = text;
+
+    var info3 = document.getElementById(`device_info_${dNum}_3`);
+    info3.innerHTML = ``;
+
+    var info4 = document.getElementById(`device_info_${dNum}_4`);
+    info4.innerHTML = ``;
+
+    var info5 = document.getElementById(`device_info_${dNum}_5`);
+    info5.innerHTML = ``;
+
+    // var canvas = document.getElementById(`device_img_${dNum}`);
+    // var ctx = canvas.getContext('2d');
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // ctx.font = '100px Consolas';
+    // ctx.textBaseline = 'middle';
+    // ctx.fillStyle = 'rgba(255, 255, 255, 1)';
+    // ctx.fillText('영상 신호 없음', 200, 400);
+    init_device(dNum);
+  });
+
+  function init_vps() {
+    for(var i = 0; i < 10; i++) {
+      init_device(i+1);
+    }
+  }
+
+  function init_device(dNum) {
+    var canvas = document.getElementById(`device_img_${dNum}`);
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = '140px sans-serif';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = 'rgba(255, 255, 255, 1)';
+    ctx.fillText('영상 신호 없음', 200, 350);
+  }
+
+</script>
+
+</html>

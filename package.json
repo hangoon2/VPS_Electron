@@ -1,0 +1,30 @@
+{
+  "name": "vps",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "electron-packager . VPS --overwrite —platform=darwin —arch=x64 —prune=false —out=release-builds --icon ./icons/vps",
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^4.0.5",
+    "moment": "^2.27.0",
+    "sharp": "^0.25.4",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.0",
+    "png-file-stream": "^1.2.1",
+    "gifencoder": "^2.0.1"
+  },
+  "dependencies": {
+    "moment": "^2.27.0",
+    "sharp": "^0.25.4",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.0",
+    "png-file-stream": "^1.2.1",
+    "gifencoder": "^2.0.1"
+  },
+  "description": ""
+}

@@ -1,0 +1,9 @@
+{
+    "VPS_MAX_DEVICES": 10,
+
+    "VPS_MAIN_PORT": 10001,
+    "VPS_MIRRORING_BASE_PORT": 8800,
+    "VPS_CONTROL_BASE_PORT": 8820,
+
+    "VPS_SHARED_DIRECTORY": "/Users/hangoon2/onycom/shared/"
+}
